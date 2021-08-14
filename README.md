@@ -1,2 +1,6 @@
 # Algorithm
-<img src="687474703a2f2f646f63732e6c696b656a617a7a2e636f6d2f696d616765732f323032302f626f6f6b2d636f7665722e6a7067](https://user-images.githubusercontent.com/74393888/129444412-49a91126-6fa6-489f-9334-3ca5c58a4e3c.jpeg)" width="700">
+
+leetcode with:
+
+<img src="https://user-images.githubusercontent.com/74393888/129444475-3e9b5109-8325-4ef6-84de-197c922da746.jpeg" width="300">
+
