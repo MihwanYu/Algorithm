@@ -1,0 +1,20 @@
+def solution(cap, n, deliveries, pickups):
+    answer = 0
+
+    houseBoxes = {'deliver':deliveries, 'pick': pickups}
+    
+    while max(houseBoxes['deliver'])==0 and max(houseBoxes['pick'])==0:
+        #Going: Deliver
+        #가야하는 최대거리 length를 answer에 plus
+        #배달물품만큼 집집마다 deliver 제거
+        tempCap = 0
+        distance = len(deliveries)-1
+        while True:
+            if deliveries[-1] + tempCap>cap: break
+            tempCap += deliveries.pop()
+        answer += distance
+
+
+        #Back: Pick
+
+    return answer

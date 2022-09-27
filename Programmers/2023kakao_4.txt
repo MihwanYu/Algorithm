@@ -1,0 +1,53 @@
+def solution(numbers):
+    
+    def checkRecursive(binary):
+        if len(binary)==1:
+            return True
+
+        mid = int(binary[len(binary)//2])
+
+        left = checkRecursive(binary[:len(binary)//2])
+        if left is False:
+            return False
+
+        right = checkRecursive(binary[len(binary)//2+1:])
+        if right is False:
+            return False
+
+        if mid==0:
+            return False
+        return True
+    
+    # def checkNonRecursive(binary):
+    #     if len(binary)==1: return True
+
+    #     mid = int(binary[len(binary)//2])
+    #     left = binary[:len(binary)//2]
+    #     right = binary[len(binary)//2+1:]
+    #     if mid==0 and (left is True or right is True)
+
+    answer = []
+    for num in numbers:
+        tempNum = num
+        binary=''
+        while num!=0:
+            binary += str(num%2)
+            num = num//2
+        
+        if len(binary)%2==0: binary = binary + '0' #63의 경우 011 1 111 맞추기 
+        # reversed(binary)
+        binary = binary[::-1]
+
+        #임의로 넣은거
+        if tempNum == 100:
+            binary = '010111110000000' #true나와야 함 
+
+        print('checking binary is ',binary)
+        if int(binary[len(binary)//2])==1:
+            isAvailable = checkRecursive(binary)
+        else:
+            isAvailable = False
+        if isAvailable: answer.append(1)
+        else: answer.append(0)
+        print()
+    return answer

@@ -1,0 +1,46 @@
+def solution(today, terms, privacies):
+    answer = []
+
+    def dateCompare(collectDate, availableMonth, today):
+        #collectDate는 문자열, availableMonth는 숫자
+        year = int(collectDate.split('.')[0])
+        month = int(collectDate.split('.')[1])
+        day = int(collectDate.split('.')[2])
+
+        month += availableMonth
+        
+        if month>12:
+            year += month//12
+            month = month%12
+        # print('newDate: %d.%d.%d, today: %s'%(year, month, day, today))
+        #아직 만료 안됐으면 False, 즉 year.month.day가 today보다 뒤(크면) False
+        #만료됐으면 True
+        if year<int(today.split('.')[0]): return True
+        elif year>int(today.split('.')[0]): return False
+        elif month<int(today.split('.')[1]): return True
+        elif month>int(today.split('.')[1]): return False
+        elif day<=int(today.split('.')[2]): return True
+        else: return False
+
+    #오름차순 1차원 정수 배열
+    # terms[0].split()[0] 약관종류, terms[0].split()[1] 유효기간
+    # privacies[0].split()[0] 약관 날짜, privacies[0].split()[1] 약관종류
+
+    #today = 2022.05.19
+    #terms = ["A 6", "B 12", "C 3"]
+    #privacies = ["2021.05.02 A", "2021.07.01 B", ....]
+    # answer = [1, 3]: privacies 안에 있는 개인정보의 순서
+    termDic = {}
+    for term in terms:
+        termDic[term.split()[0]] = int(term.split()[1])
+
+    for idx, privacy in enumerate(privacies):
+        col_date = privacy.split()[0]
+        term_type = privacy.split()[1]
+
+        isFire = dateCompare(col_date, termDic[term_type], today) #만료일자
+        # print('compare result: ',isFire)
+        if isFire: answer.append(idx+1)
+
+    answer.sort()
+    return answer
