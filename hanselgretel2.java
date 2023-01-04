@@ -10,7 +10,9 @@ public class Main {
     static int minBreadEatten;
     static Coordinate nest;
 
-
+    /*
+    bfs로 푼 헨젤과 그레텔 묹
+    */
     public static void main(String[] args) throws IOException{
         int testcase = Integer.parseInt(br.readLine());
         for(int t = 0; t<testcase; t++){
