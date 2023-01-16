@@ -1,4 +1,4 @@
-
+# DP 다시풀어야함
 def solution():
     X = int(input())
     count = 0
